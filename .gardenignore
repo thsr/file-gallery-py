@@ -1,0 +1,9 @@
+.git/
+.gitignore
+.gardenignore
+.DS_Store
+requirements.txt
+cultivate.py
+template.html.j2
+index.html
+README.md
