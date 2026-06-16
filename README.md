@@ -84,6 +84,8 @@ The script displays your files in one of two ways:
 
 ## Changelog
 
+**[2026-06-16] **Added section comments in `cultivate.py`**
+
 **[2026-05-17] Added verbose debugging mode**
 * Introduced a new `-v` or `--verbose` command line argument to toggle debug outputs
 
