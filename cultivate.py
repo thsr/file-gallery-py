@@ -250,7 +250,7 @@ def cultivate_file(file_name: str, curr_path: Path, dir_ds_store: dict) -> FileI
 
 
 """
-the house has garden
+the house has a garden
 """
 def cultivate(root_path: Path, relative_path: str = '.', curr_dir: str = '', depth: int = 3) -> int:
     if depth < 0:
