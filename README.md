@@ -49,6 +49,7 @@ The minimum set of files you'll need to keep is:
 - `cultivate.py` the main script lives here
 - `template.html.j2` the layout lives here
 - `.gardenignore` add file or folder names here to hide them from the generated website
+- `.gardenkeep` place this file inside any folder to keep it listed in the gallery but prevent the script from traversing into it or generating an `index.html` for it
 - `.gitignore` same, but files or folders here also don't get versionned if you are using Git
 - `requirements.txt` the required Python packages live here
 
@@ -81,24 +82,6 @@ The script displays your files in one of two ways:
 *   `cultivate.py` is licensed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). 
 *   `template.html.j2` styles are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 *   If you publish a site, keep the attribution link to https://kevin.garden/ or https://file.gallery/ in the HTML source.
-
-## Changelog
-
-**[2026-06-16] **Added section comments in `cultivate.py`**
-
-**[2026-05-17] Added verbose debugging mode**
-* Introduced a new `-v` or `--verbose` command line argument to toggle debug outputs
-
-**[2026-05-17 updates] .DS_Store Parsing Fixes & Finder Sync Enhancement**
-*   **Fixed `.DS_Store` Import Error**: Corrected module import to `from ds_store import DSStore`.
-*   **Added `force_ds_store_update` Feature**: Added a pre-run AppleScript hook to force macOS Finder to flush its memory cache and save icon positions to `.DS_Store` immediately.
-
-**[2026-05-17 initial Python rewrite] Ported from JavaScript (inchkev/file-gallery)**
-*   **Complete Rewrite**: Ported the core static site generator from JavaScript/Node.js to Python.
-*   **Templating Engine**: Migrated HTML generation to `Jinja2`.
-*   **Dependency Replacements**: Replaced JavaScript dependencies with Python equivalents (PIL, pathspec, markdown, ds-store).
-*   **Concurrency**: Added `ThreadPoolExecutor` for asynchronous, parallel file parsing.
-*   **Type Hinting & Dataclasses**: Refactored core logic to use Python `dataclasses` and strong typing.
 
 ## To do
 

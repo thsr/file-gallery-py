@@ -256,13 +256,16 @@ def cultivate(root_path: Path, relative_path: str = '.', curr_dir: str = '', dep
     if depth < 0:
         return 0
 
+    curr_path = root_path / curr_dir
+    if (curr_path / '.gardenkeep').exists():
+        return 0
+
     dir_data = {
         'title': f"{relative_path}/" if relative_path != '.' else '',
         'files': []
     }
 
     render_freeform = False
-    curr_path = root_path / curr_dir
     all_file_entries = list(curr_path.iterdir())
 
     # Force Finder to update the folder's .DS_Store before reading
