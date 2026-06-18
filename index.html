@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- this html file was created by https://file.gallery/ python port -->
+<!-- this html file was created by file-gallery-py python port -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>file.gallery</title>
+  <title>file-gallery-py</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="author" content="file.gallery">
-  <meta name="description" content="file.gallery is a site sown from files and directories.">
+  <meta name="author" content="file-gallery-py">
+  <meta name="description" content="file-gallery-py is a site sown from files and directories.">
 
   <style>
     html, body {
@@ -42,14 +42,11 @@
       display: block;
       position: absolute;
       outline: 1px solid rgba(0,0,0,0.1);
+      inline-size: max-content;
+      max-width: 40rem;
       
       padding: 0em 1em;
     }
-    
-    .item * {
-      width: max-content;
-    }
-    
     .item img, .item video {
       width: auto; height: auto;
       max-width: 18em;
@@ -66,6 +63,9 @@
     }
     h1, h2, h3, h4, h5, h6, p, ul, ol, li, pre, code {
       margin: 0;
+    }
+    code {
+      background-color: #eee;
     }
     pre {
       font-family: inherit;
@@ -86,9 +86,40 @@
 
     <div class="plantbed" style="left: max(0px, calc(50% - 198.5px - 9em))">
       
-      <div class="item" style="top: 50px; left: 0px">
+      <div class="item markdown" style="top: 575px; left: 9px">
         
-        <h3><a href="about.md">about.md</a> (255B)</h3>
+        <h3 class="file-name"><a href="CHANGELOG.md">CHANGELOG.md</a> (1.368kB)</h3>
+        <div class="md">
+          <p><strong>[2026-06-18] HTML template tweaks</strong></p>
+<p><strong>[2026-06-16] Added <code>.gardenkeep</code> skip support</strong></p>
+<ul>
+<li>Folders containing a <code>.gardenkeep</code> file are listed in the parent gallery but not traversed — no <code>index.html</code> is generated for them or their descendants.</li>
+</ul>
+<p><strong>[2026-06-16] Added section comments in <code>cultivate.py</code></strong></p>
+<p><strong>[2026-05-17] Added verbose debugging mode</strong></p>
+<ul>
+<li>Introduced a new <code>-v</code> or <code>--verbose</code> command line argument to toggle debug outputs</li>
+</ul>
+<p><strong>[2026-05-17 updates] .DS_Store Parsing Fixes &amp; Finder Sync Enhancement</strong></p>
+<ul>
+<li><strong>Fixed <code>.DS_Store</code> Import Error</strong>: Corrected module import to <code>from ds_store import DSStore</code>.</li>
+<li><strong>Added <code>force_ds_store_update</code> Feature</strong>: Added a pre-run AppleScript hook to force macOS Finder to flush its memory cache and save icon positions to <code>.DS_Store</code> immediately.</li>
+</ul>
+<p><strong>[2026-05-17 initial Python rewrite] Ported from JavaScript (inchkev/file-gallery)</strong></p>
+<ul>
+<li><strong>Complete Rewrite</strong>: Ported the core static site generator from JavaScript/Node.js to Python.</li>
+<li><strong>Templating Engine</strong>: Migrated HTML generation to <code>Jinja2</code>.</li>
+<li><strong>Dependency Replacements</strong>: Replaced JavaScript dependencies with Python equivalents (PIL, pathspec, markdown, ds-store).</li>
+<li><strong>Concurrency</strong>: Added <code>ThreadPoolExecutor</code> for asynchronous, parallel file parsing.</li>
+<li><strong>Type Hinting &amp; Dataclasses</strong>: Refactored core logic to use Python <code>dataclasses</code> and strong typing.</li>
+</ul>
+        </div>
+        
+      </div>
+      
+      <div class="item markdown" style="top: 50px; left: 0px">
+        
+        <h3 class="file-name"><a href="about.md">about.md</a> (247B)</h3>
         <div class="md">
           <p><strong>file-gallery-py</strong> is a static site generator<br>
 that uses files, directories, and .DS_Store</p>
@@ -98,30 +129,30 @@ of <a href="https://github.com/inchkev/file-gallery">file-gallery</a> by <a href
         
       </div>
       
-      <div class="item" style="top: 253px; left: 4px">
+      <div class="item directory" style="top: 253px; left: 4px">
         
-        <h3><a href="formal example/">formal example/</a> (3 items)</h3>
+        <h3 class="file-name"><a href="formal example/">formal example/</a> (3 items)</h3>
         
       </div>
       
-      <div class="item" style="top: 514px; left: 7px">
+      <div class="item raw" style="top: 524px; left: 6px">
         
-        <h3>last updated</h3>
+        <h3 class="file-name">last updated</h3>
         
         <pre>2026-05-17</pre>
         
         
       </div>
       
-      <div class="item" style="top: 276px; left: 50px">
+      <div class="item directory" style="top: 276px; left: 50px">
         
-        <h3><a href="natural example/">natural example/</a> (3 items)</h3>
+        <h3 class="file-name"><a href="natural example/">natural example/</a> (3 items)</h3>
         
       </div>
       
-      <div class="item" style="top: 62px; left: 397px">
+      <div class="item image" style="top: 62px; left: 397px">
         
-        <h3><a href="screenshot.jpg">screenshot.jpg</a> (11.031kB)</h3>
+        <h3 class="file-name"><a href="screenshot.jpg">screenshot.jpg</a> (11.031kB)</h3>
         <a href="screenshot.jpg">
           <img src="screenshot.jpg" alt="screenshot.jpg" width="568" height="683">
         </a>
@@ -133,7 +164,7 @@ of <a href="https://github.com/inchkev/file-gallery">file-gallery</a> by <a href
   </main>
 </body>
 <!--
-kevin.garden (unified template) by Kevin Chen, 2023-26
+template customized for file-gallery-py,
 licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 please link to https://kevin.garden/ or https://file.gallery/, if possible.
 attribution only in the html source is sufficient. non-commercial use only :)

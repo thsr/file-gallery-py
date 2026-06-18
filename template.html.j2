@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- this html file was created by https://file.gallery/ python port -->
+<!-- this html file was created by file-gallery-py python port -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>file.gallery{% if title %}/{{ title }}{% endif %}</title>
+  <title>file-gallery-py{% if title %}/{{ title }}{% endif %}</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="author" content="file.gallery">
-  <meta name="description" content="file.gallery is a site sown from files and directories.">
+  <meta name="author" content="file-gallery-py">
+  <meta name="description" content="file-gallery-py is a site sown from files and directories.">
 
   <style>
     html, body {
@@ -42,6 +42,8 @@
       display: block;
       position: absolute;
       outline: 1px solid rgba(0,0,0,0.1);
+      inline-size: max-content;
+      max-width: 40rem;
       {% else %}
       display: inline-block;
       margin: 1em 0;
@@ -50,11 +52,6 @@
       {% endif %}
       padding: 0em 1em;
     }
-    {% if render_freeform %}
-    .item * {
-      width: max-content;
-    }
-    {% endif %}
     .item img, .item video {
       width: auto; height: auto;
       max-width: {% if render_freeform %}18em{% else %}28em{% endif %};
@@ -71,6 +68,9 @@
     }
     h1, h2, h3, h4, h5, h6, p, ul, ol, li, pre, code {
       margin: 0;
+    }
+    code {
+      background-color: #eee;
     }
     pre {
       font-family: inherit;
@@ -94,43 +94,43 @@
 
     <div class="plantbed" {% if render_freeform %}style="left: max(0px, calc(50% - {{ center_offset }}px - 9em))"{% endif %}>
       {% for file in files %}
-      <div class="item" {% if render_freeform and file.location %}style="top: {{ file.location.y }}px; left: {{ file.location.x }}px"{% endif %}>
+      <div class="item {{ file.type }}" {% if render_freeform and file.location %}style="top: {{ file.location.y }}px; left: {{ file.location.x }}px"{% endif %}>
         {% if file.type == 'directory' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.contents }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.contents }})</h3>
         {% elif file.type == 'image' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
         <a href="{{ file.path }}">
           <img src="{{ file.path }}" alt="{{ file.name }}" width="{{ file.width }}" height="{{ file.height }}">
         </a>
         {% elif file.type == 'video' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
         <video width="{{ file.width }}" height="{{ file.height }}" controls>
           <source src="{{ file.path }}"> <!-- TODO: add type -->
           Your browser does not support the video tag.
         </video>
         {% elif file.type == 'audio' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
         <audio controls>
           <source src="{{ file.path }}"> <!-- TODO: add type -->
           Your browser does not support the audio tag.
         </audio>
         {% elif file.type == 'text' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a></h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a></h3>
         {% if file.contents %}
         <pre>{{ file.contents }}</pre>
         {% endif %}
         {% elif file.type == 'markdown' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
         <div class="md">
           {{ file.contents | safe }}
         </div>
         {% elif file.type == 'raw' %}
-        <h3>{{ file.name }}</h3>
+        <h3 class="file-name">{{ file.name }}</h3>
         {% if file.contents %}
         <pre>{{ file.contents }}</pre>
         {% endif %}
         {% elif file.type == 'other' %}
-        <h3><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
+        <h3 class="file-name"><a href="{{ file.path }}">{{ file.name }}</a> ({{ file.size }})</h3>
         {% endif %}
       </div>
       {% endfor %}
@@ -139,7 +139,7 @@
   </main>
 </body>
 <!--
-kevin.garden (unified template) by Kevin Chen, 2023-26
+template customized for file-gallery-py,
 licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 please link to https://kevin.garden/ or https://file.gallery/, if possible.
 attribution only in the html source is sufficient. non-commercial use only :)

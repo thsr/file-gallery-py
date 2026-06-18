@@ -169,7 +169,7 @@ def cultivate_directory(file_name: str, dir_ds_store: dict, curr_path: Path, rel
         path=f"{file_name}/",
         name=f"{file_name}/",
         type='directory',
-        contents='empty' if file_count == 0 else f"{file_count} item{'s' if file_count > 1 else ''}"
+        contents='directory' if file_count == 0 else f"{file_count} item{'s' if file_count > 1 else ''}"
     )
     if dir_loc:
         item.location = dir_loc

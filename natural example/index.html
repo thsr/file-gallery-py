@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- this html file was created by https://file.gallery/ python port -->
+<!-- this html file was created by file-gallery-py python port -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>file.gallery/./natural example/</title>
+  <title>file-gallery-py/./natural example/</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-  <meta name="author" content="file.gallery">
-  <meta name="description" content="file.gallery is a site sown from files and directories.">
+  <meta name="author" content="file-gallery-py">
+  <meta name="description" content="file-gallery-py is a site sown from files and directories.">
 
   <style>
     html, body {
@@ -42,14 +42,11 @@
       display: block;
       position: absolute;
       outline: 1px solid rgba(0,0,0,0.1);
+      inline-size: max-content;
+      max-width: 40rem;
       
       padding: 0em 1em;
     }
-    
-    .item * {
-      width: max-content;
-    }
-    
     .item img, .item video {
       width: auto; height: auto;
       max-width: 18em;
@@ -66,6 +63,9 @@
     }
     h1, h2, h3, h4, h5, h6, p, ul, ol, li, pre, code {
       margin: 0;
+    }
+    code {
+      background-color: #eee;
     }
     pre {
       font-family: inherit;
@@ -89,23 +89,23 @@
 
     <div class="plantbed" style="left: max(0px, calc(50% - 106.0px - 9em))">
       
-      <div class="item" style="top: 50px; left: 0px">
+      <div class="item raw" style="top: 50px; left: 0px">
         
-        <h3>test</h3>
-        
-        
-      </div>
-      
-      <div class="item" style="top: 234px; left: 212px">
-        
-        <h3>test2</h3>
+        <h3 class="file-name">test</h3>
         
         
       </div>
       
-      <div class="item" style="top: 426px; left: 13px">
+      <div class="item raw" style="top: 234px; left: 212px">
         
-        <h3>test3</h3>
+        <h3 class="file-name">test2</h3>
+        
+        
+      </div>
+      
+      <div class="item raw" style="top: 426px; left: 13px">
+        
+        <h3 class="file-name">test3</h3>
         
         
       </div>
@@ -115,7 +115,7 @@
   </main>
 </body>
 <!--
-kevin.garden (unified template) by Kevin Chen, 2023-26
+template customized for file-gallery-py,
 licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 please link to https://kevin.garden/ or https://file.gallery/, if possible.
 attribution only in the html source is sufficient. non-commercial use only :)
